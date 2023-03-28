@@ -1,0 +1,127 @@
+﻿@using MovimientosBodegaSensible.Models;
+@model IEnumerable<MovimientosBodegaSensible.Models.Sac>
+
+@{
+    ViewData["Title"] = "SAC";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h2>Registro SAC</h2>
+<a asp-controller="ExportSac" asp-action="ExportToExcel" class="boton-excel btn btn-primary bi bi-file-earmark-spreadsheet"> Descargar como Excel</a>
+
+<br />
+<div class="buscador">
+    <a asp-action="Create" class="boton-crear-VentaServicio btn btn-sm btn-primary bi-plus-square-dotted" style="float:left;"> Ingresar un nuevo registro</a>
+    <form asp-controller="Sacs" asp-action="Index" style="float:right;">
+        <strong class="text-light">Buscar un producto</strong>
+        <p>
+            <input type="text" name="buscarTramiteSac" placeholder="Buscar por nombre" class="text-black form-control-sm" />
+            <input type="submit" value="Buscar" class="btn btn-primary bi-search" />
+        </p>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoMovimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Responsable)
+            </th>
+            <th>Controles</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoMovimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroOrden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responsable)
+            </td>
+           <td>
+                <a asp-action="Edit" class="btn btn-warning bi-pencil-fill" asp-route-id="@item.Id"> Editar</a>
+                <a asp-action="Delete" class="btn btn-danger bi-trash-fill" asp-route-id="@item.Id"> Borrar</a>
+           </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-center">
+
+            @if (pager.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Sacs" asp-action="Index" asp-route-pg="1">Primera</a>
+                </li>
+                <li>
+                    <a class="page-link" asp-controller="Sacs" asp-action="Index" asp-route-pg="@(pager.CurrentPage - 1)">Atrás</a>
+                </li>
+            }
+
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Sacs" asp-action="Index" asp-route-pg="@pge"> @pge </a>
+                </li>
+            }
+
+            @if (pager.CurrentPage < pager.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Sacs" asp-action="Index" asp-route-pg="@(pager.CurrentPage + 1)">Siguiente</a>
+                </li>
+                <li>
+                    <a class="page-link" asp-controller="Sacs" asp-action="Index" asp-route-pg="@(pager.TotalPages)">Última</a>
+                </li>
+            }
+
+        </ul>
+    }
+</div>

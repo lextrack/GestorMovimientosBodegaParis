@@ -1,0 +1,48 @@
+﻿@model MovimientosBodegaSensible.Models.ServicioTecnico
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h2 class="row p-2 mb-1">¿Te gustaría eliminar este producto?</h2>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Producto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CasoSiebel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CasoSiebel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nguia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nguia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Responsable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Responsable)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-warning">Volver al registro</a>
+    </form>
+</div>

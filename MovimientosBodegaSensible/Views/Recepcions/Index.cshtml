@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MovimientosBodegaSensible.Models.Recepcion>
+
+@{
+    ViewData["Title"] = "Recepción de mercadería";
+}
+
+<h2>Registro de ventas</h2>
+
+<br />
+<p>
+    <a asp-action="Create" class="boton-crear-normal btn btn-sm btn-primary bi-plus-square-dotted"> Ingresar nueva mercadería</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dpto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Responsable)
+            </th>
+            <th>Controles</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dpto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responsable)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning bi-pencil-fill" asp-route-id="@item.Id"> Editar</a>
+                <a asp-action="Delete" class="btn btn-danger bi-trash-fill" asp-route-id="@item.Id"> Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
