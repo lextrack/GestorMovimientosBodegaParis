@@ -2,4 +2,4 @@
 
 <p>En prueba...</p>
 
-<img src="./Docs/Captura.png">
+<img src="./MovimientosBodegaSensible/Docs/Captura.png">
