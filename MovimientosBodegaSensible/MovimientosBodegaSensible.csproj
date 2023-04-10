@@ -6,12 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <Copyright>Lextrack</Copyright>
-    <FileVersion>1.0.0</FileVersion>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPPlus" Version="6.2.0" />
+    <PackageReference Include="EPPlus" Version="6.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
