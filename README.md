@@ -1,5 +1,3 @@
-<h1 align="center">Gestor Movimiento Bodega Electro Menor</h1>
-
-<p>En prueba...</p>
+<h1 align="center">Gestor Movimientos Bodega Electro Menor</h1>
 
 <img src="./MovimientosBodegaSensible/Docs/Captura.png">
