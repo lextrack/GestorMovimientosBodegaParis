@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovimientosBodegaSensible.Models;
 
-public partial class MovimientosParisContext : DbContext
+public partial class MovimientosParisContext : IdentityDbContext
 {
     public MovimientosParisContext()
     {
@@ -28,6 +29,9 @@ public partial class MovimientosParisContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<MovimientoVenta>(entity =>
         {
             entity.Property(e => e.Fecha).HasColumnType("datetime");
