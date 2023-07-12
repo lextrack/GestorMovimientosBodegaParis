@@ -23,7 +23,7 @@ namespace MovimientosBodegaSensible.Controllers
                 venta = venta.Where(s => s.Producto!.Contains(buscarVenta) || s.Boleta.ToString().Contains(buscarVenta) || s.Sku.ToString().Contains(buscarVenta));
             }
 
-            const int pageSize = 5;
+            const int pageSize = 15;
             if (pg < 1)
                 pg = 1;
 
