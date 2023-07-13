@@ -25,14 +25,14 @@ namespace MovimientosBodegaSensible.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Registro()
+        public IActionResult Regs()
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Registro(RegistroViewModel modelo)
+        public async Task<IActionResult> Regs(RegistroViewModel modelo)
         {
             if (!ModelState.IsValid)
             {
@@ -135,7 +135,7 @@ namespace MovimientosBodegaSensible.Controllers
             var resultadoLoginExterno = await signInManager.ExternalLoginSignInAsync(info.LoginProvider,
                 info.ProviderKey, isPersistent: true, bypassTwoFactor: true);
 
-            // Ya la cuenta existe
+
             if (resultadoLoginExterno.Succeeded)
             {
                 return LocalRedirect(urlRetorno);

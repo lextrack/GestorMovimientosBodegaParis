@@ -19,7 +19,7 @@ h2{
 }
 
 .boton-crear-normal {
-    width: 180px;
+    width: 160px;
     margin-left: 50%;
     transform: translateX(-50%);
     justify-content: center;
@@ -28,9 +28,7 @@ h2{
 }
 
 .boton-excel {
-    width: 180px;
-    margin-left: 50%;
-    margin-bottom: -7%;
-    transform: translateX(-50%);
-    justify-content: center;
+    width: 160px;
+    font-size: 16px;
+    text-align: center;
 }

@@ -16,7 +16,7 @@
 }
 
 <h2>Registro de ventas</h2>
-<a asp-controller="ExportVentas" asp-action="ExportToExcel" class="boton-excel btn btn-primary bi bi-file-earmark-spreadsheet"> Descargar como Excel</a>
+
 
 <br />
 <div class="buscador">
@@ -84,6 +84,8 @@
 }
     </tbody>
 </table>
+
+<a asp-controller="ExportVentas" asp-action="ExportToExcel" class="boton-excel btn btn-primary bi bi-file-earmark-spreadsheet"> Descargar todo como Excel</a>
 
 <div class="container">
     @if (pager.TotalPages > 0)
