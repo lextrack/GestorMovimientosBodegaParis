@@ -31,7 +31,7 @@ namespace MovimientosBodegaSensible.Controllers
                 }
             }
 
-            const int pageSize = 10;
+            const int pageSize = 15;
             if (pg < 1)
                 pg = 1;
 
