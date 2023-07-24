@@ -16,13 +16,13 @@
 
 @if (Model.Usuarios is not null)
 {
-
     <form method="post">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <td>Acción</td>
                     <td>Email</td>
+                    <td>Es Admin</td>
                 </tr>
             </thead>
             <tbody>
@@ -36,21 +36,36 @@
                                 Hacer Admin
                             </button>
 
-                            <button class="btn btn-danger me-2 bi bi-person-x"
+                            <button class="btn btn-warning me-2 bi bi-person-x"
                                     asp-action="RemoverAdmin"
                                     asp-route-email="@usuario.Email">
                                 Quitar Admin
                             </button>
+
+                            <button class="btn btn-danger me-2 bi bi-trash"
+                                    asp-action="RemoverUsuario"
+                                    asp-route-email="@usuario.Email">
+                                Eliminar Usuario
+                            </button>
                         </td>
                         <td>
                             @usuario.Email
+                        </td>
+                        <td>
+                            @if (usuario.IsAdmin)
+                            {
+                                <span class="badge bg-success">Sí</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">No</span>
+                            }
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </form>
-
 }
 else
 {

@@ -25,14 +25,14 @@ namespace MovimientosBodegaSensible.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Regs()
+        public IActionResult Regsss()
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Regs(RegistroViewModel modelo)
+        public async Task<IActionResult> Regsss(RegistroViewModel modelo)
         {
             if (!ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MovimientosBodegaSensible.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Nombre de usuario o password incorrecto.");
+                ModelState.AddModelError(string.Empty, "Nombre de usuario o contraseña incorrecta.");
                 return View(modelo);
             }
 
@@ -128,7 +128,7 @@ namespace MovimientosBodegaSensible.Controllers
             var info = await signInManager.GetExternalLoginInfoAsync();
             if (info is null)
             {
-                mensaje = "Error cargando la data de login externo";
+                mensaje = "Error cargando los datos del login externo";
                 return RedirectToAction("login", routeValues: new { mensaje });
             }
 
@@ -179,16 +179,18 @@ namespace MovimientosBodegaSensible.Controllers
         [Authorize(Roles = Constantes.RolAdmin)]
         public async Task<IActionResult> Listado(string mensaje = null)
         {
-            var usuarios = await context.Users.Select(u => new UsuarioViewModel
+            var users = await context.Users.ToListAsync();
+
+            var usuarios = users.Select(u => new UsuarioViewModel
             {
-                Email = u.Email
-            }).ToListAsync();
+                Email = u.Email,
+                IsAdmin = userManager.IsInRoleAsync(u, Constantes.RolAdmin).Result // Check if the user is an admin
+            }).ToList();
 
             var modelo = new UsuariosListadoViewModel();
             modelo.Usuarios = usuarios;
             modelo.Mensaje = mensaje;
             return View(modelo);
-
         }
 
         [HttpPost]
@@ -224,5 +226,23 @@ namespace MovimientosBodegaSensible.Controllers
             return RedirectToAction("Listado",
                 routeValues: new { mensaje = "Rol removido correctamente a " + email });
         }
+
+        [HttpPost]
+        [Authorize(Roles = Constantes.RolAdmin)]
+        public async Task<IActionResult> RemoverUsuario(string email)
+        {
+            var usuario = await context.Users.SingleOrDefaultAsync(u => u.Email == email);
+
+            if (usuario is null)
+            {
+                return NotFound();
+            }
+
+            await userManager.DeleteAsync(usuario);
+
+            return RedirectToAction("Listado",
+                routeValues: new { mensaje = "Usuario eliminado correctamente: " + email });
+        }
+
     }
 }

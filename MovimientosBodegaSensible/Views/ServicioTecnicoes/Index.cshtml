@@ -85,7 +85,23 @@
     </tbody>
 </table>
 
-<a asp-controller="ExportVentas" asp-action="ExportToExcel" class="boton-excel btn btn-primary bi bi-file-earmark-spreadsheet"> Descargar todo como Excel</a>
+<div class="dropdown">
+    <button class="btn btn-primary bi bi-file-earmark-spreadsheet dropdown-toggle boton-excel" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Descarga registros a Excel
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#" onclick="exportToExcel('ExportToExcelCien')">Descarga últimos 100 registros</a></li>
+        <li><a class="dropdown-item" href="#" onclick="exportToExcel('ExportToExcelMil')">Descarga últimos 1000 registros</a></li>
+        <li><a class="dropdown-item" href="#" onclick="exportToExcel('ExportToExcelTodo')">Descarga todo</a></li>
+    </ul>
+</div>
+
+<script>
+    function exportToExcel(action) {
+
+        window.location.href = '/ExportServicioTecnico/' + action;
+    }
+</script>
 
 <div class="container">
     @if (pager.TotalPages > 0)
