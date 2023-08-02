@@ -13,7 +13,7 @@ namespace MovimientosBodegaSensible.Controllers
             _context = context;
         }
 
-        // GET: MovimientoVentas, pagination and serching items
+        // GET: MovimientoVentas, pagination and searching items
         public async Task<IActionResult> Index(string buscarVenta, int pg = 1)
         {
             var venta = from ventas in _context.MovimientoVentas select ventas;

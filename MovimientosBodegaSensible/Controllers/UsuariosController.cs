@@ -184,7 +184,7 @@ namespace MovimientosBodegaSensible.Controllers
             var usuarios = users.Select(u => new UsuarioViewModel
             {
                 Email = u.Email,
-                IsAdmin = userManager.IsInRoleAsync(u, Constantes.RolAdmin).Result // Check if the user is an admin
+                IsAdmin = userManager.IsInRoleAsync(u, Constantes.RolAdmin).Result
             }).ToList();
 
             var modelo = new UsuariosListadoViewModel();
@@ -207,7 +207,7 @@ namespace MovimientosBodegaSensible.Controllers
             await userManager.AddToRoleAsync(usuario, Constantes.RolAdmin);
 
             return RedirectToAction("Listado",
-                routeValues: new { mensaje = "Rol asignado correctamente a " + email });
+                routeValues: new { mensaje = "Rol asignado correctamente a: " + email });
         }
 
         [HttpPost]
@@ -224,7 +224,7 @@ namespace MovimientosBodegaSensible.Controllers
             await userManager.RemoveFromRoleAsync(usuario, Constantes.RolAdmin);
 
             return RedirectToAction("Listado",
-                routeValues: new { mensaje = "Rol removido correctamente a " + email });
+                routeValues: new { mensaje = "Rol removido correctamente a: " + email });
         }
 
         [HttpPost]
