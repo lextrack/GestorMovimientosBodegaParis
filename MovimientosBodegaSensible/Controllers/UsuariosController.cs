@@ -88,7 +88,7 @@ namespace MovimientosBodegaSensible.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Nombre de usuario o contraseña incorrecta.");
+                ModelState.AddModelError(string.Empty, "Correo o contraseña incorrecta.");
                 return View(modelo);
             }
 
