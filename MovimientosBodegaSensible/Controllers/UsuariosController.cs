@@ -111,6 +111,7 @@ namespace MovimientosBodegaSensible.Controllers
             return new ChallengeResult(proveedor, propiedades);
         }
 
+        //Para usar provedor de inicio de sesión externos
         [AllowAnonymous]
         public async Task<IActionResult> RegistrarUsuarioExterno(string urlRetorno = null,
             string remoteError = null)
