@@ -19,17 +19,25 @@ namespace MovimientosBodegaSensible.Controllers
 
             var data = _dbContext.MovimientoVentas.ToList();
 
-            var excelPackage = new ExcelPackage();
-            var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
+            using (var excelPackage = new ExcelPackage())
+            {
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
 
-            worksheet.Cells.LoadFromCollection(data, true);
+                worksheet.Cells.LoadFromCollection(data, true);
 
-            var stream = new MemoryStream();
-            excelPackage.SaveAs(stream);
+                for (int i = 2; i <= worksheet.Dimension.End.Row; i++)
+                {
+                    worksheet.Cells[i, 2].Style.Numberformat.Format = "dd-MM-yyyy HH:mm:ss";
+                }
 
-            var fileName = "Total de registros de ventas.xlsx";
-            var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            return File(stream.ToArray(), contentType, fileName);
+                var stream = new MemoryStream();
+                excelPackage.SaveAs(stream);
+                stream.Position = 0;
+
+                var fileName = "Total de registros de ventas.xlsx";
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return File(stream.ToArray(), contentType, fileName);
+            }
         }
 
         public IActionResult ExportToExcelCien()
@@ -38,17 +46,25 @@ namespace MovimientosBodegaSensible.Controllers
 
             var data = _dbContext.MovimientoVentas.Take(100).ToList();
 
-            var excelPackage = new ExcelPackage();
-            var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
+            using (var excelPackage = new ExcelPackage())
+            {
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
 
-            worksheet.Cells.LoadFromCollection(data, true);
+                worksheet.Cells.LoadFromCollection(data, true);
 
-            var stream = new MemoryStream();
-            excelPackage.SaveAs(stream);
+                for (int i = 2; i <= worksheet.Dimension.End.Row; i++)
+                {
+                    worksheet.Cells[i, 2].Style.Numberformat.Format = "dd-MM-yyyy HH:mm:ss";
+                }
 
-            var fileName = "Últimos 100 registros de ventas.xlsx";
-            var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            return File(stream.ToArray(), contentType, fileName);
+                var stream = new MemoryStream();
+                excelPackage.SaveAs(stream);
+                stream.Position = 0;
+
+                var fileName = "Últimos 100 registros de ventas.xlsx";
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return File(stream.ToArray(), contentType, fileName);
+            }
         }
 
         public IActionResult ExportToExcelMil()
@@ -57,18 +73,25 @@ namespace MovimientosBodegaSensible.Controllers
 
             var data = _dbContext.MovimientoVentas.Take(1000).ToList();
 
-            var excelPackage = new ExcelPackage();
-            var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
+            using (var excelPackage = new ExcelPackage())
+            {
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Datos de ventas");
 
-            worksheet.Cells.LoadFromCollection(data, true);
+                worksheet.Cells.LoadFromCollection(data, true);
 
-            var stream = new MemoryStream();
-            excelPackage.SaveAs(stream);
+                for (int i = 2; i <= worksheet.Dimension.End.Row; i++)
+                {
+                    worksheet.Cells[i, 2].Style.Numberformat.Format = "dd-MM-yyyy HH:mm:ss";
+                }
 
-            var fileName = "Últimos 1000 registros de ventas.xlsx";
-            var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            return File(stream.ToArray(), contentType, fileName);
+                var stream = new MemoryStream();
+                excelPackage.SaveAs(stream);
+                stream.Position = 0;
+
+                var fileName = "Últimos 1000 registros de ventas.xlsx";
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return File(stream.ToArray(), contentType, fileName);
+            }
         }
-
     }
 }

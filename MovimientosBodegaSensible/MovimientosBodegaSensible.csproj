@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <Copyright>Lextrack</Copyright>
-    <FileVersion>1.0.8</FileVersion>
-    <AssemblyVersion>1.0.8</AssemblyVersion>
+    <FileVersion>1.0.9</FileVersion>
+    <AssemblyVersion>1.0.9</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
