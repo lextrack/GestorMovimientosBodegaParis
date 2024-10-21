@@ -2,4 +2,4 @@
 
 <img src="./MovimientosBodegaSensible/Docs/Captura2.png">
 <img src="./MovimientosBodegaSensible/Docs/Captura.png">
-<img src="./MovimientosBodegaSensible/Docs/Captura 3.png">
+<img src="./MovimientosBodegaSensible/Docs/Captura3.png">
